@@ -1,0 +1,44 @@
+[
+  {
+    "document_type": "Incident Report",
+    "document_id": "12345",
+    "date_issued": null,
+    "entities_involved": [],
+    "summary": "This document record serves as a cover sheet for an incident report, identified by ID 12345. The incident location is recorded as Virginia.",
+    "status": null,
+    "location_context": "Virginia",
+    "source_file": "test_doc_1.png"
+  },
+  {
+    "document_id": "12345",
+    "path": "output/12345.json"
+  },
+  {
+    "document_id": "12345",
+    "path": "output/12345.json"
+  },
+  {
+    "document_id": "12345",
+    "path": "output/12345.json"
+  },
+  {
+    "document_id": "12345",
+    "path": "output/12345.json"
+  },
+  {
+    "document_id": "12345",
+    "path": "output/12345.json"
+  },
+  {
+    "document_id": "12345",
+    "path": "output/12345.json"
+  },
+  {
+    "document_id": "12345",
+    "path": "output/12345.json"
+  },
+  {
+    "document_id": "12345",
+    "path": "output/12345.json"
+  }
+]

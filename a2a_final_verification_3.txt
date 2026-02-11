@@ -1,0 +1,259 @@
+Initializing ADK-native SLED Disaster Response System...
+DEBUG: create_adk_agent ocr_agent...
+DEBUG: get_secret_gcloud for SECRET_GEMINI...
+DEBUG: gcloud success for SECRET_GEMINI
+DEBUG: Agent ocr_agent created.
+DEBUG: create_adk_agent investigation_agent...
+DEBUG: get_secret_gcloud for SECRET_GEMINI...
+DEBUG: gcloud success for SECRET_GEMINI
+DEBUG: Agent investigation_agent created.
+DEBUG: create_adk_agent mitigation_agent...
+DEBUG: get_secret_gcloud for SECRET_GEMINI...
+DEBUG: gcloud success for SECRET_GEMINI
+DEBUG: Agent mitigation_agent created.
+DEBUG: create_adk_agent rag_agent...
+DEBUG: get_secret_gcloud for SECRET_GEMINI...
+DEBUG: gcloud success for SECRET_GEMINI
+DEBUG: Agent rag_agent created.
+
+--- Phase 1: ADK Digitization ---
+ADK Digitizing form_1.png...
+Warning: there are non-text parts in the response: ['function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
+OCR Context: {'response': 'The document record has been digitized and saved with ID 12345.', 'document_id': 'Extracted from image'}
+ADK Digitizing test_doc_1.png...
+OCR Context: {'response': 'The document has been digitized and saved with ID 12345.', 'document_id': 'Extracted from image'}
+
+--- Phase 2: ADK Investigation ---
+
+Checking eligibility for John Doe...
+Traceback (most recent call last):
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/agent_coordinator_adk.py", line 69, in <module>
+    coordinator.run_full_workflow(test_dir)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/agent_coordinator_adk.py", line 39, in run_full_workflow
+    decision = self.investigation.verify_eligibility(resident)
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/investigation_agent_adk.py", line 38, in verify_eligibility
+    return run_adk_agent(self.agent, f"Verify eligibility for {resident_name}")
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/genai_adk_base.py", line 99, in run_adk_agent
+    )
+    
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/google/adk/runners.py", line 445, in run
+    event = event_queue.get()
+  File "/usr/lib/python3.13/queue.py", line 199, in get
+    self.not_empty.wait()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/threading.py", line 359, in wait
+    waiter.acquire()
+    ~~~~~~~~~~~~~~^^
+KeyboardInterrupt
+Exception in thread Thread-5 (_asyncio_thread_main):
+Traceback (most recent call last):
+  File "/usr/lib/python3.13/threading.py", line 1044, in _bootstrap_inner
+    self.run()
+    ~~~~~~~~^^
+  File "/usr/lib/python3.13/threading.py", line 995, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/google/adk/runners.py", line 436, in _asyncio_thread_main
+    asyncio.run(_invoke_run_async())
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/google/adk/runners.py", line 429, in _invoke_run_async
+    async for event in agen:
+      event_queue.put(event)
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/google/adk/runners.py", line 562, in run_async
+    async for event in agen:
+      yield event
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/google/adk/runners.py", line 550, in _run_with_trace
+    async for event in agen:
+      yield event
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/google/adk/runners.py", line 779, in _exec_with_plugin
+    async for event in agen:
+    ...<64 lines>...
+        yield event
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/google/adk/runners.py", line 539, in execute
+    async for event in agen:
+      yield event
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/google/adk/agents/base_agent.py", line 294, in run_async
+    async for event in agen:
+      yield event
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/google/adk/agents/llm_agent.py", line 468, in _run_async_impl
+    async for event in agen:
+    ...<5 lines>...
+        should_pause = True
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/google/adk/flows/llm_flows/base_llm_flow.py", line 427, in run_async
+    async for event in agen:
+      last_event = event
+      yield event
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/google/adk/flows/llm_flows/base_llm_flow.py", line 504, in _run_one_step_async
+    async for llm_response in agen:
+    ...<13 lines>...
+          yield event
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/google/adk/flows/llm_flows/base_llm_flow.py", line 967, in _call_llm_async
+    async for event in agen:
+      yield event
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/google/adk/flows/llm_flows/base_llm_flow.py", line 950, in _call_llm_with_tracing
+    async for llm_response in agen:
+    ...<13 lines>...
+      yield llm_response
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/google/adk/flows/llm_flows/base_llm_flow.py", line 1190, in _run_and_handle_error
+    raise model_error
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/google/adk/flows/llm_flows/base_llm_flow.py", line 1175, in _run_and_handle_error
+    async for llm_response in agen:
+      tracing.trace_generate_content_result(span, llm_response)
+      yield llm_response
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/google/adk/models/google_llm.py", line 242, in generate_content_async
+    response = await self.api_client.aio.models.generate_content(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/google/genai/models.py", line 7319, in generate_content
+    return await self._generate_content(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        model=model, contents=contents, config=parsed_config
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/google/genai/models.py", line 6095, in _generate_content
+    response = await self._api_client.async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        'post', path, request_dict, http_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/google/genai/_api_client.py", line 1432, in async_request
+    result = await self._async_request(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+        http_request=http_request, http_options=http_options, stream=False
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/google/genai/_api_client.py", line 1365, in _async_request
+    return await self._async_retry(  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self._async_request_once, http_request, stream
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/tenacity/asyncio/__init__.py", line 112, in __call__
+    do = await self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/tenacity/asyncio/__init__.py", line 157, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/tenacity/_utils.py", line 111, in inner
+    return call(*args, **kwargs)
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/tenacity/__init__.py", line 413, in exc_check
+    raise retry_exc.reraise()
+          ~~~~~~~~~~~~~~~~~^^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/tenacity/__init__.py", line 184, in reraise
+    raise self.last_attempt.result()
+          ~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/tenacity/asyncio/__init__.py", line 116, in __call__
+    result = await fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/google/genai/_api_client.py", line 1338, in _async_request_once
+    client_response = await self._async_httpx_client.request(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/httpx/_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+    )
+    ^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        pool_request.request
+        ^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/httpcore/_async/connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/httpcore/_backends/auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/httpcore/_backends/anyio.py", line 115, in connect_tcp
+    stream: anyio.abc.ByteStream = await anyio.connect_tcp(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/anyio/_core/_sockets.py", line 215, in connect_tcp
+    gai_res = await getaddrinfo(
+              ^^^^^^^^^^^^^^^^^^
+        target_host, remote_port, family=family, type=socket.SOCK_STREAM
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/anyio/_core/_sockets.py", line 649, in getaddrinfo
+    gai_res = await get_async_backend().getaddrinfo(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        encoded_host, port, family=family, type=type, proto=proto, flags=flags
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/google/home/mattashton/Documents/pyTutoring/ryan-sessions/agentic-weather/env-adk-weather/lib/python3.13/site-packages/anyio/_backends/_asyncio.py", line 2732, in getaddrinfo
+    return await get_running_loop().getaddrinfo(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        host, port, family=family, type=type, proto=proto, flags=flags
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 939, in getaddrinfo
+    return await self.run_in_executor(
+                 ~~~~~~~~~~~~~~~~~~~~^
+        None, getaddr_func, host, port, family, type, proto, flags)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 901, in run_in_executor
+    executor.submit(func, *args), loop=self)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/concurrent/futures/thread.py", line 171, in submit
+    raise RuntimeError('cannot schedule new futures after shutdown')
+RuntimeError: cannot schedule new futures after shutdown

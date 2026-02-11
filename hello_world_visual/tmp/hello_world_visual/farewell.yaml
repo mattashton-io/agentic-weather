@@ -1,0 +1,6 @@
+name: farewell
+model: gemini-2.5-flash
+agent_class: LlmAgent
+instruction: You are a farewell agent that says farewell in under 4 words.
+sub_agents: []
+tools: []

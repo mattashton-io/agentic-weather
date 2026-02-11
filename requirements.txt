@@ -1,0 +1,11 @@
+googlemaps
+google-cloud-secret-manager
+python-dotenv
+google-genai
+google-adk
+Flask
+google-cloud-storage
+requests
+google-cloud-bigquery
+pandas
+matplotlib
