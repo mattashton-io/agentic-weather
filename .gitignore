@@ -5,3 +5,5 @@ __pycache__
 temp/
 *.png
 test_docs/*
+hello_world*
+ref/hello_world

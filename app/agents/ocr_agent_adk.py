@@ -1,7 +1,7 @@
 import os
 import json
 from google.genai import types as genai_types
-from genai_adk_base import create_adk_agent, run_adk_agent
+from app.core.genai_adk_base import create_adk_agent, run_adk_agent
 
 def save_digitized_record(doc_data: str):
     """
@@ -53,6 +53,11 @@ def create_ocr_agent():
         instructions=OCR_INSTRUCTION,
         tools=[save_digitized_record]
     )
+
+def ocr_tool(image_path: str) -> str:
+    """Digitizes a document from an image path and returns the result."""
+    agent = OCRAgentADK()
+    return agent.digitize_document(image_path)["response"]
 
 class OCRAgentADK:
     def __init__(self):

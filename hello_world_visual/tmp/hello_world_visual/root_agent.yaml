@@ -1,8 +1,0 @@
-name: hello_world_visual
-model: gemini-2.5-flash
-agent_class: LlmAgent
-instruction: "You are the root agent that coordinates other agents. This is a
-  greeter agent "
-sub_agents:
-  - config_path: ./sequential.yaml
-tools: []

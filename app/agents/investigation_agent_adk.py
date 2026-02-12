@@ -1,5 +1,5 @@
-from genai_adk_base import create_adk_agent, run_adk_agent
-from mcp_server import lookup_resident_record, get_disaster_zones
+from app.core.genai_adk_base import create_adk_agent, run_adk_agent
+from app.tools.mcp_server import lookup_resident_record, get_disaster_zones
 
 def resident_lookup(resident_name: str):
     """Looks up a resident's record to check for disaster relief eligibility."""
@@ -29,6 +29,11 @@ def create_investigation_agent():
         instructions=INVESTIGATION_INSTRUCTION,
         tools=[resident_lookup, disaster_zones]
     )
+
+def investigation_tool(resident_name: str) -> str:
+    """Verify disaster relief eligibility for a resident."""
+    agent = InvestigationAgentADK()
+    return agent.verify_eligibility(resident_name)
 
 class InvestigationAgentADK:
     def __init__(self):

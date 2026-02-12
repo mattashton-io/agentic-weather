@@ -1,6 +1,6 @@
 import json
 import os
-from genai_adk_base import create_adk_agent, run_adk_agent
+from app.core.genai_adk_base import create_adk_agent, run_adk_agent
 
 def read_disaster_summary():
     """Reads the cumulative disaster records from the ingestion summary file."""
@@ -27,6 +27,11 @@ def create_mitigation_agent():
         instructions=MITIGATION_INSTRUCTION,
         tools=[read_disaster_summary]
     )
+
+def mitigation_tool() -> str:
+    """Generate a mitigation report based on current disaster records."""
+    agent = MitigationAgentADK()
+    return agent.generate_report()
 
 class MitigationAgentADK:
     def __init__(self):

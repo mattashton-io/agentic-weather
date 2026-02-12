@@ -1,5 +1,5 @@
-from genai_adk_base import create_adk_agent, run_adk_agent
-from mcp_server import search_digitized_documents
+from app.core.genai_adk_base import create_adk_agent, run_adk_agent
+from app.tools.mcp_server import search_digitized_documents
 
 def search_docs(query: str):
     """Searches digitized disaster records for specific information."""
@@ -22,6 +22,11 @@ def create_rag_agent():
         tools=[search_docs]
     )
 
+def rag_tool(question: str) -> str:
+    """Answer questions based on digitized disaster records."""
+    agent = RAGAgentADK()
+    return agent.answer_question(question)
+
 class RAGAgentADK:
     def __init__(self):
         self.agent = create_rag_agent()
@@ -32,5 +37,3 @@ class RAGAgentADK:
 if __name__ == "__main__":
     agent = RAGAgentADK()
     print("ADK RAG Agent initialized.")
-    # Test call
-    # print(agent.answer_question("What incidents happened in Palisades?"))

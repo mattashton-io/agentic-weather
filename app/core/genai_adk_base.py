@@ -20,7 +20,9 @@ def load_env_simple(path=".env"):
                     os.environ[key] = val
                 except: pass
 
+# Try loading from current dir or project root
 load_env_simple()
+load_env_simple("../../.env") 
 os.environ["GOOGLE_GENAI_USE_VERTEXAI"] = "0"
 
 # Global cache for secrets to avoid repeated gcloud calls
@@ -33,7 +35,6 @@ def get_secret_gcloud(secret_id):
     if secret_id in _SECRET_CACHE:
         return _SECRET_CACHE[secret_id]
 
-    print(f"DEBUG: get_secret_gcloud for {secret_id}...", flush=True)
     target_name = os.environ.get(secret_id, secret_id)
     project_id = os.environ.get("GOOGLE_CLOUD_PROJECT")
     
@@ -45,7 +46,6 @@ def get_secret_gcloud(secret_id):
         result = subprocess.run(cmd, capture_output=True, text=True, check=True)
         secret_val = result.stdout.strip()
         _SECRET_CACHE[secret_id] = secret_val
-        print(f"DEBUG: gcloud success for {secret_id}", flush=True)
         return secret_val
     except Exception as e:
         print(f"Error fetching secret via gcloud: {e}", file=sys.stderr)
@@ -58,22 +58,19 @@ def create_adk_agent(name, description, instructions, tools=None):
     """
     Helper to create a google-adk Agent with standardized config.
     """
-    print(f"DEBUG: create_adk_agent {name}...", flush=True)
     api_key = get_secret_gcloud("SECRET_GEMINI")
     if not api_key:
         raise ValueError("Failed to retrieve Gemini API Key via gcloud.")
     
     os.environ["GOOGLE_API_KEY"] = api_key
     
-    agent = Agent(
+    return Agent(
         model=DEFAULT_MODEL,
         name=name,
         description=description,
         instruction=instructions,
         tools=tools or []
     )
-    print(f"DEBUG: Agent {name} created.", flush=True)
-    return agent
 
 def run_adk_agent(agent, prompt, user_id="user_123", session_id=None):
     """
@@ -123,12 +120,3 @@ def run_adk_agent(agent, prompt, user_id="user_123", session_id=None):
         print(f"ADK Execution Error: {e}", file=sys.stderr)
             
     return response_text
-
-if __name__ == "__main__":
-    test_agent = create_adk_agent(
-        name="test_worker",
-        description="A test worker",
-        instructions="Say 'Success' and stop."
-    )
-    response = run_adk_agent(test_agent, "Hello")
-    print(f"Final ADK Response: {response}")

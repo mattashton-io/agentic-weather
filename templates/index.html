@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLED | Disaster Response Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">SLED DISASTER RESPONSE</div>
+            <div class="status-badge">
+                <div class="status-dot"></div>
+                ADK Agents Active
+            </div>
+        </header>
+
+        <main class="dashboard-grid">
+            <section class="left-col">
+                <div class="card" style="margin-bottom: 30px;">
+                    <div class="card-title">
+                        Command Center
+                        <button class="btn-primary" id="run-workflow">Start Full Workflow</button>
+                    </div>
+                    <div class="input-group">
+                        <label for="image-select">Ingest Disaster Record (Multimodal OCR)</label>
+                        <input type="text" id="image-path" placeholder="e.g., test_docs/form_1.png" value="test_docs/form_1.png">
+                    </div>
+                    
+                    <div id="output-console">
+                        <div class="output-line system">> System initialized. Ready for orchestration.</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Inquiry System (RAG)</div>
+                    <div class="input-group" style="display: flex; gap: 10px;">
+                        <input type="text" id="rag-query" placeholder="Ask a question about the records...">
+                        <button class="btn-primary" style="padding: 10px 20px;" id="send-rag">Ask</button>
+                    </div>
+                    <div id="rag-response" style="font-size: 14px; min-height: 40px; color: var(--text-muted);">
+                        Results will appear here...
+                    </div>
+                </div>
+            </section>
+
+            <section class="right-col">
+                <div class="card" style="margin-bottom: 30px;">
+                    <div class="card-title">Orchestration Feed</div>
+                    <ul class="activity-feed" id="activity-feed">
+                        <li class="activity-item active">
+                            <div class="activity-time">Just now</div>
+                            <div class="activity-text">Dashboard loaded successfully.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Mitigation Trends</div>
+                    <div style="height: 150px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.2); border-radius: 12px; font-size: 13px; color: var(--text-muted); border: 1px dashed var(--card-border);">
+                        Live charts will be generated after report creation.
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
